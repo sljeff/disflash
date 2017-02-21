@@ -106,9 +106,10 @@ function xhr_with_callback(url, callback, xheader, method){
     xhr.send();
 }
 
-var get_stream_url= 'https://localhost:9527/proxy/http://play-ali.youku.com/play/get.json?vid='+location.href.match(/id_.*html/)[0].slice(3,-5)+'&ct=10';
-var get_ip_url = 'https://localhost:9527/util/get_ip/';
-var flvjs_url = 'https://localhost:9527/util/get_flvjs/';
+var proxy_root = 'https://localhost:9527';
+var get_stream_url= proxy_root+'/proxy/http://play-ali.youku.com/play/get.json?vid='+location.href.match(/id_.*html/)[0].slice(3,-5)+'&ct=10';
+var get_ip_url = proxy_root+'/util/get_ip/';
+var flvjs_url = proxy_root+'/util/get_flvjs/';
 var stream_data, my_ip;
 
 function init_and_start(){
@@ -203,7 +204,7 @@ function add_video_into_arr () {
             one_video.duration = parseInt(one_seg.total_milliseconds_video);
             one_video.filesize = parseInt(one_seg.size);
             var real_url = getVideoSrc(stream_index, seg_index, stream_data, one_stream.stream_type, one_seg.fileid);
-            one_video.url = 'https://localhost:9527/proxy/http:' + real_url;
+            one_video.url = proxy_root+'/proxy/http:' + real_url;
             a_type_of_video.segments.push(one_video);
         }
         video_arr.push(a_type_of_video);

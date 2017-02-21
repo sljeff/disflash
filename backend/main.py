@@ -38,6 +38,7 @@ class BaseHandler(RequestHandler):
 class ScriptHandler(BaseHandler):
     @gen.coroutine
     def get(self, url_path):
+        self.set_header('Content-Type', 'application/javascript')
         yield rules.get_script(url_path, self)
 
 

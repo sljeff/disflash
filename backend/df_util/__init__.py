@@ -21,6 +21,7 @@ def get_util(util_name, request_handler):
         for name, value in res.headers.items():
             request_handler.set_header(name, value)
         request_handler.write(res.body)
+        yield request_handler.flush()
         request_handler.finish()
         # ip = request_handler.request.remote_ip
         # request_handler.write({'ip': ip})
@@ -32,6 +33,24 @@ def get_util(util_name, request_handler):
         request_handler.set_header('Content-Type', 'application/javascript')
         flv_path = os.path.join(file_path, 'flv.min.js')
         with open(flv_path, 'r') as f:
+            content = f.read()
+            request_handler.write(content)
+        yield request_handler.flush()
+        return
+
+    if util_name.startswith('get_hlsjs'):
+        request_handler.set_header('Content-Type', 'application/javascript')
+        hls_path = os.path.join(file_path, 'hls.min.js')
+        with open(hls_path, 'r') as f:
+            content = f.read()
+            request_handler.write(content)
+        yield request_handler.flush()
+        return
+
+    if util_name.startswith('get_danmaku'):
+        request_handler.set_header('Content-Type', 'application/javascript')
+        hls_path = os.path.join(file_path, 'danmaku.min.js')
+        with open(hls_path, 'r') as f:
             content = f.read()
             request_handler.write(content)
         yield request_handler.flush()

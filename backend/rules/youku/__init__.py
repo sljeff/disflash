@@ -15,15 +15,14 @@ def script(url_path, request_handler):
     :rtype: bool
     """
     if not url_path.startswith('http://v.youku.com/v_show/'):
-        Return(False)
+        raise Return(False)
 
-    request_handler.set_header('Content-Type', 'application/javascript')
     script_path = os.path.join(_file_path, 'youku_html5.js')
     with open(script_path, 'r') as f:
         content = f.read()
         request_handler.write(content)
     yield request_handler.flush()
-    Return(True)
+    raise Return(True)
 
 
 def proxy(url_path, request_handler):
