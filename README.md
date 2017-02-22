@@ -57,7 +57,7 @@ backend/
 需要实现两个方法：`script` `proxy`。
 
 `script` 方法需要是一个tornado 协程，所以必须：
-```
+```python
 from tornado.gen import coroutine, Return
 ```
 
@@ -87,7 +87,7 @@ def script(url_path, request_handler):
 
 **函数如下：**
 
-```
+```python
 def proxy(url_path, request_handler):
     """
     :type url_path: str
@@ -116,7 +116,7 @@ def proxy(url_path, request_handler):
 
 **③ 在 Tampermonkey 的内容，前面的注释里加入匹配规则**
 
-```
+```javascript
 // @match     http://v.youku.com/v_show/*
 ```
 做完这一步就完成了一个规则的添加。
