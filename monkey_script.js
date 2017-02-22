@@ -8,6 +8,7 @@
 // @match        http://live.bilibili.com/*
 // @match        https://live.bilibili.com/*
 // @match        http://*.acfun.cn/*
+// @match        http://v.yinyuetai.com/video/*
 // @include      *://v.qq.com/*
 // @include      *://lol.qq.com/v/*
 // @include      *://film.qq.com/*
@@ -16,6 +17,13 @@
 // run-at        document-start
 // @grant        none
 // ==/UserScript==
+
+function main(){
+    setTimeout(function(){
+        s=document.body.appendChild(document.createElement('script'));
+        s.src='https://localhost:9527/getscript/' + location.href;
+    }, 2000);
+}
 
 if(location.href.indexOf('.qq.com/')!==-1){
     Object.defineProperty(navigator, 'plugins', {
@@ -34,11 +42,17 @@ if(location.href.indexOf('.qq.com/')!==-1){
 else if(location.href.indexOf('.acfun.cn')!==-1){
     //noinspection JSAnnotator
     document.domain = 'acfun.cn';
+    main();
+}
+
+else if(location.href.indexOf('v.yinyuetai.com/')!==-1){
+    if(location.href.indexOf('/h5/')===-1){
+        var href_arr = location.href.split('/');
+        var vid = href_arr[href_arr.length-1] || href_arr[href_arr.length-2];
+        window.location = 'http://v.yinyuetai.com/video/h5/' + vid;
+    }
 }
 
 else{
-    setTimeout(function(){
-        s=document.body.appendChild(document.createElement('script'));
-        s.src='https://localhost:9527/getscript/' + location.href;
-    }, 2000);
+    main();
 }
