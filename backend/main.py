@@ -6,9 +6,11 @@ from tornado import ioloop, httpserver, gen
 import os
 import rules
 import df_util
+import sys
 
 executor = ThreadPoolExecutor(10)
 file_path = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(file_path)
 
 
 class BaseHandler(RequestHandler):

@@ -243,11 +243,11 @@ function set_video () {
         var btn_title;
         switch(stream_type){
             case 'flvhd':
-                btn_title='高糊'; break;
+                btn_title='low'; break;
             case 'mp4hd2':
-                btn_title='高清'; break;
+                btn_title='high'; break;
             case 'mp4hd3':
-                btn_title='超清'; break;
+                btn_title='super'; break;
         }
         var btn = document.createElement('button');
         btn.textContent = btn_title;

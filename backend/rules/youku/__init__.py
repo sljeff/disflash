@@ -76,7 +76,7 @@ def proxy(url_path, request_handler):
         for n, v in r_headers.items():
             request_handler.set_header(n, v)
         try:
-            for chunk in res.iter_content(8192):
+            for chunk in res.iter_content(4096):
                 if not chunk:
                     break
                 request_handler.write(chunk)
