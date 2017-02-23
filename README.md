@@ -21,6 +21,7 @@ disflash 计划是希望在关掉 flash 或者浏览器默认不再提供 flash 
 **需要 Python 3 。**
 
 ### ① 安装依赖
+把 disflash clone 到本地，进入项目文件夹。
 ```
 pip3 install -r backend/requirements.txt
 ```
@@ -58,7 +59,7 @@ backend/
 需要实现两个方法：`script` `proxy`。
 
 `script` 方法需要是一个tornado 协程，所以必须：
-```
+```python
 from tornado.gen import coroutine, Return
 ```
 
@@ -88,7 +89,7 @@ def script(url_path, request_handler):
 
 **函数如下：**
 
-```
+```python
 def proxy(url_path, request_handler):
     """
     :type url_path: str
