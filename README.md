@@ -42,6 +42,19 @@ python3 backend/main.py
 
 ### ④ 然后打开已支持的视频网站看看效果吧。
 
+## 截图
+![](show_pic/bilive.png)
+
+![](show_pic/youku.png)
+
+![](show_pic/acfun.png)
+
+![](show_pic/sohu.png)
+
+![](show_pic/yinyuetai.png)
+
+![](show_pic/vqq.png)
+
 ## 如何扩展 disflash
 比如，需要给优酷编写规则，那么需要：
 
