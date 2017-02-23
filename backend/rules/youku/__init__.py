@@ -67,7 +67,7 @@ def proxy(url_path, request_handler):
             if res.status_code == 200:
                 break
             else:
-                if _ == 8:
+                if _ == 10:
                     break
                 res.close()
                 continue
@@ -76,7 +76,7 @@ def proxy(url_path, request_handler):
         for n, v in r_headers.items():
             request_handler.set_header(n, v)
         try:
-            for chunk in res.iter_content(4096):
+            for chunk in res.iter_content(8192):
                 if not chunk:
                     break
                 request_handler.write(chunk)
