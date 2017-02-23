@@ -7,8 +7,11 @@
 // @match        http://v.youku.com/v_show/*
 // @match        http://live.bilibili.com/*
 // @match        https://live.bilibili.com/*
-// @match        http://*.acfun.cn/*
+// @match        http://www.acfun.cn/*
+// @match        http://m.acfun.cn/*
 // @match        http://v.yinyuetai.com/video/*
+// @match        http://tv.sohu.com/*.shtml*
+// @match        http://my.tv.sohu.com/*.shtml*
 // @include      *://v.qq.com/*
 // @include      *://lol.qq.com/v/*
 // @include      *://film.qq.com/*
